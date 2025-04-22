@@ -10,7 +10,7 @@
 }
 
 
-button {
+.headerButton {
     height: 40px;
     width: max(15%, 200px);
     background-color: #383d64;
@@ -21,12 +21,12 @@ button {
     transition: .3s;
 }
 
-button:hover {
+.headerButton:hover {
     background-color: #0ef;
     color: #191c31;
     transform: scale(1.1);
 }
 
-button:active {
+.headerButton:active {
     transform: scale(.9);
 }
