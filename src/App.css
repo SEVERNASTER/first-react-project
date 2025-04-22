@@ -1,0 +1,7 @@
+
+.appContainer {
+    height: 100vh;
+    background-color: #191c31;
+    display: grid;
+    grid-template-rows: 15% 85%;
+}

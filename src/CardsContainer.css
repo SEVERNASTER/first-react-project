@@ -1,0 +1,8 @@
+.cardsContainer {
+    border: solid #fff;
+    overflow: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, clamp(250px, 500px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}

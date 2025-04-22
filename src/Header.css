@@ -1,0 +1,32 @@
+
+.headerContainer {
+    height: 100%;
+    background-color: #191c31;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 0 20px;
+}
+
+
+button {
+    height: 40px;
+    width: max(15%, 200px);
+    background-color: #383d64;
+    color: #0ef;
+    border: solid #0ef 3px;
+    font-size: 1.2rem;
+    border-radius: 20px;
+    transition: .3s;
+}
+
+button:hover {
+    background-color: #0ef;
+    color: #191c31;
+    transform: scale(1.1);
+}
+
+button:active {
+    transform: scale(.9);
+}
