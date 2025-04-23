@@ -7,7 +7,8 @@ import { MdDelete } from "react-icons/md";
 function Card({ model, brand, year, seats, transmission, category, color, price, available, imgUrl }) {
     return (
         <div className='cardContainer'>
-            <div className="card-img-container">
+            <div className="card-img-container" >
+                <img src={imgUrl} alt="car-image" />
                 <img src={imgUrl} alt="car-image" />
             </div>
             <div className="car-info-container">
