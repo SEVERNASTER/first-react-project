@@ -1,9 +1,12 @@
 .cardsContainer {
-    border: solid #fff;
+    /* border: solid #fff; */
     overflow: auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
     justify-content: center;
     gap: 20px;
     padding: 20px;
+    /* max-width: 600px; */
+    /* width: 80%; */
+    /* margin: auto; */
 }
