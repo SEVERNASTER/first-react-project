@@ -1,14 +1,24 @@
 import React from 'react'
+import './Select.css'
 
-function Select({ name, selectId, options }) {
+function Select({ name, selectId, label, options }) {
     return (
-        <select name={name} id={selectId}>
-            {
-                Object.entries(options).map(([key, value], index) => {
-                    return <option key={index} value={key}>{value}</option>
-                })
-            }
-        </select>
+        <div className="select-group">
+            <label htmlFor={selectId} >{label}</label>
+            <select name={name} id={selectId}>
+                {
+                    options.map(({ value, optionText, quickDescription }) => {
+                        const description = quickDescription != undefined ? quickDescription : optionText
+                        return <option
+                            key={value}
+                            value={value}
+                            title={description}
+                        >{optionText}</option>
+                    })
+
+                }
+            </select>
+        </div>
     )
 }
 
