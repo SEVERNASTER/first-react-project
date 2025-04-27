@@ -1,0 +1,15 @@
+
+.create-car-container {
+    height: 100vh;
+    background: linear-gradient(90deg,#1F254F, #17121C);
+    background: #1F254F;
+    /* color: #9360F7;s */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.create-car-section h2 {
+    background-image: linear-gradient(to right, #965DF7, #fc64cc); 
+    -webkit-background-clip: text; 
+    color: transparent;
+}

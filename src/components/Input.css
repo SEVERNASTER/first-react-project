@@ -1,0 +1,44 @@
+
+
+.input-group {
+    position: relative;
+    height: 45px;
+    width: 100%;
+
+    margin-top: 50px;
+    margin-left: 20px;
+}
+
+.input-group input {
+    height: 100%;
+    width: 100%;
+    border-radius: 15px;
+    padding: 0 20px;
+    background-color: #1F254F;
+    border: dashed 2px #fff;
+    outline: none;
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+.input-group label {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    color: #fff;
+    background-color: #1F254F;
+    color: #6381FC;
+    transition: .3s;
+    padding: 0 15px;
+    font-size: 1.2rem;
+}
+
+.input-group input:focus ~ label,
+.input-group input:valid ~ label    {
+    top: -10px;
+    font-size: 1rem;
+}
+
+.input-group input:valid {
+    border: solid 2px #fff;
+}
