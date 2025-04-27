@@ -1,17 +1,29 @@
 
 
+import React, { useState } from 'react';
 import './index.css'
 import GradientTitle from '../../../components/GradientTitle';
 import Input from '../../../components/Input';
 import Select from '../../../components/Select';
+import TextArea from '../../../components/TextArea';
+import UploadImage from '../../../components/UploadImage';
 
 
 function AddCarForm() {
+    const [imageFile, setImageFile] = useState(null)
+
+    const handleImageUpload = (file) => {
+                setImageFile(file);
+    }
     return (
         <div className='create-car-container'>
-            <section className="create-car-section  create-carcar-info">
-                <div className="cc-title-container">
-                    < GradientTitle text='Informacion' color1='#965DF7' color2='#6481FC' />
+            <section className="create-car-section  create-car-info">
+                <div className="cc-title-container" >
+                    < GradientTitle text='Informacion' color1='#DD519A' color2='#6A7DFC'
+                        customStyles={{
+                            fontSize: '2rem'
+                        }}
+                    />
                 </div>
 
                 <Select name='ubication' selectId='ubicationCreate' label='Ubicacion'
@@ -42,7 +54,7 @@ function AddCarForm() {
 
                 <Select
                     name="typeOfCar"
-                    selectId="add-car-type"
+                    selectId="typeCreate"
                     label="Tipo de Auto"
                     options={[
                         {
@@ -102,24 +114,109 @@ function AddCarForm() {
                     ]}
                 />
 
-                <Input inputId='add-car-year' name='year' type='number' label='Año'
-                    min={1900} max={new Date().getFullYear()} maxLength={4}
-                />
+                <div className="add-car-two">
+                    <Input inputId='yearCreate' name='year' type='number' label='Año'
+                        min={1900} max={new Date().getFullYear()} maxLength={4}
+                    />
+
+                    <Input inputId='colorCreate' name='color' type='text' label='Color' />
+                </div>
+
+                <Input inputId='priceCreate' name='price' type='number' label='Precio' min={1} />
+
+                <div className="add-car-three">
+                    <Input inputId='mileageCreate' name='mileage' type='number' label='Kilometraje' min={1} />
+                    <Input inputId='licensePlateCreate' name='licensePlate' type='text' label='Placa' maxLength={8} />
+                </div>
+
 
 
             </section>
 
             <section className="create-car-section car-equipment">
                 <div className="cc-title-container">
-                    <h2>Equipamiento</h2>
+                    < GradientTitle text='Equipamiento' color1='#DD519A' color2='#6A7DFC'
+                        customStyles={{
+                            fontSize: '2rem'
+                        }}
+                    />
                 </div>
+
+                <Select name='transmission' selectId='transmissionCreate' label='Transmision'
+                    options={[
+                        {
+                            value: '',
+                            optionText: 'Seleccionar'
+                        },
+                        {
+                            value: 'auto',
+                            optionText: 'Automático'
+                        },
+                        {
+                            value: 'manual',
+                            optionText: 'Manual'
+                        },
+                        {
+                            value: 'semi-auto',
+                            optionText: 'Semi-automático'
+                        }
+                    ]}
+                />
+
+                <Select name='fuelType' selectId='fuelTypeCreate' label='Combustible'
+                    options={[
+                        {
+                            value: '',
+                            optionText: 'Seleccionar'
+                        },
+                        {
+                            value: 'gas',
+                            optionText: 'Gas'
+                        },
+                        {
+                            value: 'gasoline',
+                            optionText: 'Gasolina'
+                        },
+                        {
+                            value: 'electric',
+                            optionText: 'Electrico'
+                        },
+                        {
+                            value: 'hybrid',
+                            optionText: 'Hibrido'
+                        }
+                    ]}
+                />
+
+                <Input inputId='seatsCreate' name='seats' type='number' label='Capacidad de Asientos' />
+
+                <TextArea
+                    textAreaId="carDescription"
+                    name="description"
+                    label="Descripción del Auto"
+                    rows={4}
+                    cols={50} // Y las columnas (ancho del textarea)
+                    maxLength={500}
+                />
+
 
             </section>
 
+            
+
             <section className="create-car-section car-url-photos">
                 <div className="cc-title-container">
-                    <h2>Fotos (URL)</h2>
+                    < GradientTitle text='Fotos (URL)' color1='#DD519A' color2='#6A7DFC'
+                        customStyles={{
+                            fontSize: '2rem'
+                        }}
+                    />
                 </div>
+
+                <UploadImage
+                    label="Elige una foto para tu vehículo"
+                onImageUpload={handleImageUpload}
+                />
 
             </section>
         </div>
