@@ -10,10 +10,10 @@ import UploadImage from '../../../components/UploadImage';
 
 
 function AddCarForm() {
-    const [imageFile, setImageFile] = useState(null)
+    const [images, setImages] = useState(null)
 
-    const handleImageUpload = (file) => {
-                setImageFile(file);
+    const handleImageUpload = (files) => {
+        setImages(files);
     }
     return (
         <div className='create-car-container'>
@@ -195,14 +195,14 @@ function AddCarForm() {
                     name="description"
                     label="Descripción del Auto"
                     rows={4}
-                    cols={50} // Y las columnas (ancho del textarea)
+                    cols={50} 
                     maxLength={500}
                 />
 
 
             </section>
 
-            
+
 
             <section className="create-car-section car-url-photos">
                 <div className="cc-title-container">
@@ -215,7 +215,7 @@ function AddCarForm() {
 
                 <UploadImage
                     label="Elige una foto para tu vehículo"
-                onImageUpload={handleImageUpload}
+                    onImageUpload={handleImageUpload}
                 />
 
             </section>

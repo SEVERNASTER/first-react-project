@@ -2,19 +2,22 @@ import React, { useState } from 'react';
 import './UploadImage.css'
 
 function UploadImage({ label, onImageUpload }) {
-    const [imagePreview, setImagePreview] = useState(null);
+    const [images, setImages] = useState([])
+    const [error, setError] = useState(null)
 
-    // Función para manejar el cambio en el input file
     const handleFileChange = (e) => {
-        const file = e.target.files[0];
+        const files = Array.from(e.target.files);
         
-        if (file) {
-            // Generar una URL temporal para previsualizar la imagen
-            const imageUrl = URL.createObjectURL(file);
-            setImagePreview(imageUrl);
+        if (files.length > 5) {
 
-            // Llamar a la función onImageUpload pasada como prop (si existe)
-            onImageUpload(file);
+            setError('No se puede subir mas de 5 imágenes')
+
+        }else{
+            setError(null)
+            const updatedUrls = files.map(file => URL.createObjectURL(file))
+            setImages(updatedUrls)
+
+            onImageUpload(updatedUrls);
         }
     };
 
@@ -22,11 +25,15 @@ function UploadImage({ label, onImageUpload }) {
         <div className="upload-image-container">
             <label>{label}</label>
             <input 
+                multiple
                 type="file" 
-                accept="image/*" // Limita a solo imágenes
+                accept="image/*"
                 onChange={handleFileChange}
             />
-            {imagePreview && <img src={imagePreview} alt="Preview" className="image-preview" />}
+            {error && <p>{error}</p>}
+            {images && images.map(url => {
+                return <img key={url} src={url} alt="Car Preview" className="image-preview" />
+            })}
         </div>
     );
 }
