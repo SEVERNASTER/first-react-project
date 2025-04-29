@@ -2,27 +2,43 @@ import React, { useState } from 'react';
 import './UploadImage.css'
 import UploadedImage from './UploadedImage';
 import { FaCloudUploadAlt } from "react-icons/fa";
+import { toast } from 'react-toastify';
 
 function UploadImage({ label, onImageUpload }) {
     const [images, setImages] = useState([])
     const [error, setError] = useState(null)
+    const [remainingImages, setRemainingImages] = useState(5)
 
     const handleFileChange = (e) => {
         const files = Array.from(e.target.files);
 
-        if (files.length > 5) {
+        if (files.length > 5 || files.length > remainingImages) {
             setError('No se puede subir mas de 5 imágenes')
+            console.log('no se pueden subir las imagenes');
+            
         } else {
             setError(null)
             const updatedUrls = files.map(file => URL.createObjectURL(file))
-            setImages(updatedUrls)
-
-            onImageUpload(updatedUrls);
+            
+            const totalUrls = [...images, ...updatedUrls]
+            setImages(totalUrls)
+            const rest = remainingImages - updatedUrls.length
+            const finalValue = rest < 0 ? remainingImages : rest
+            setRemainingImages(finalValue)
+            console.log('quedan ' + finalValue + ' imagenes');
+            
+            
+            onImageUpload(totalUrls);
+            // toast.success('Se agrego la imagen')
         }
     };
 
     const handleDeleteImage = (imageUrl) => {
         const updatedImages = images.filter(url => url != imageUrl)
+        const leftImages = remainingImages + 1
+        setRemainingImages(leftImages)
+        console.log('queda ' + leftImages + ' imagenes');
+        
         setImages(updatedImages)
     }
 
