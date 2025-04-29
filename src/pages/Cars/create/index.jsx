@@ -214,7 +214,7 @@ function AddCarForm() {
                 </div>
 
                 <UploadImage
-                    label="Elige una foto para tu vehículo"
+                    label="Subir"
                     onImageUpload={handleImageUpload}
                 />
 
