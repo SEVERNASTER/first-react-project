@@ -1,8 +1,8 @@
 .toast-container {
     position: fixed;
-    top: 20px;
+    top: 30px;
     left: 50%;
-    transform: translateX(-50px);
+    transform: translateX(-50%) translateY(-100px);
     background-color: var(--toastBgColor);
     color: white;
     border: solid 3px #fff;
@@ -14,15 +14,15 @@
     z-index: 9999;
     font-size: 1.5rem;
     font-weight: 600;
-    transition: .5s ease-in;
+    transition: .5s ease-in all;
 }
 
 .toast-container.show {
-    transform: translateY(0);
+    transform: translateX(-50%) translateY(0);
 }
 
 .toast-container.hide {
-    transform: translateX(-50px);
+    transform: translateX(-50%) translateY(-100px);
 }
 
 

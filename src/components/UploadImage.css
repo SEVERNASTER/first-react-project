@@ -5,6 +5,33 @@
     grid-template-rows: 10% 90%;
 }
 
+.header-upload-container {
+    position: relative;
+}
+
+.counter-upload  {
+    position: absolute;
+    left: 50%;
+    top: -50px;
+    transform: translateX(-50%);
+    color: #fff;
+    font-weight: 600;
+}
+
+.counter-upload.full {
+    color: red;
+    animation: red-text 2s ease-in infinite;
+}
+
+@keyframes red-text {
+    0%, 100% {
+        text-shadow: none;
+    }50% {
+        /* text-shadow: 0 0 20px rgb(255, 43, 43); */
+        transform: translateX(-50%) scale(1.2);
+    }
+}
+
 .upload-image-container input {
     display: none;
 }
@@ -38,11 +65,11 @@
     height: 100%;
     overflow: auto;
     overflow-x: hidden;
-    padding: 25px;
+    padding: 35px;
     display: flex;
     flex-direction: column;
-    gap:  20px;
-    border: solid #fff;
+    gap:  30px;
+    border: dashed 5px #fff;
     border-radius: 10px;
     color: #fff;
 }
